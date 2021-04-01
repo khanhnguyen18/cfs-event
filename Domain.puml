@@ -1,0 +1,36 @@
+@startuml
+
+class CfsEvent {
+    #Id
+    #Number
+    #TypeCode
+    #DispatchTime
+    #Responder
+    #Agency
+}
+
+class Agency {
+    #Id
+    #Name
+}
+
+class Responder {
+    #Id
+    #Code
+    #Name
+    #Agency
+}
+
+class User {
+    #Id
+    #UserName
+    #Password
+    #Agency
+}
+
+
+CfsEvent "many" *-- "1" Responder
+CfsEvent "many" *-- "1" Agency
+User "many" *-- "1" Agency
+
+@enduml

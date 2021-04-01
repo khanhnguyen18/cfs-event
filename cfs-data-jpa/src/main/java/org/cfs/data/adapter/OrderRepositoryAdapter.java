@@ -3,8 +3,8 @@ package org.cfs.data.adapter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.cfs.data.jpa.entity.OrderDetailEntity;
-import org.cfs.data.jpa.entity.OrderEntity;
+import org.cfs.data.jpa.entity.AgencyEntity;
+import org.cfs.data.jpa.entity.UserEntity;
 import org.cfs.data.jpa.repository.OrderJpaRepository;
 import org.cfs.data.mapper.OrderDataMapper;
 import org.cfs.domain.entity.Order;
@@ -22,10 +22,10 @@ public class OrderRepositoryAdapter implements OrderRepository {
 
     @Override
     public void makeOrder(Order order) {
-        OrderEntity orderEntity = mapper.map(order);
+        AgencyEntity orderEntity = mapper.map(order);
         orderEntity.setDateTime(LocalDateTime.now());
 
-        for (OrderDetailEntity detail : orderEntity.getOrderDetails()) {
+        for (UserEntity detail : orderEntity.getOrderDetails()) {
             detail.setOrder(orderEntity);
         }
         orderJpaRepository.save(orderEntity);

@@ -1,7 +1,7 @@
 package org.cfs.data.mapper;
 
-import org.cfs.data.jpa.entity.OrderDetailEntity;
-import org.cfs.data.jpa.entity.OrderEntity;
+import org.cfs.data.jpa.entity.UserEntity;
+import org.cfs.data.jpa.entity.AgencyEntity;
 import org.cfs.domain.entity.Order;
 import org.cfs.domain.entity.OrderDetail;
 import org.mapstruct.Mapper;
@@ -17,7 +17,7 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
         nullValueCheckStrategy = ALWAYS
 )
 public interface OrderDataMapper {
-    OrderEntity map(Order order);
-    OrderDetailEntity mapOrderDetail(OrderDetail orderDetail);
-    List<OrderDetailEntity> mapOrderDetailEntityList (List<OrderDetail> orderDetail);
+    AgencyEntity map(Order order);
+    UserEntity mapOrderDetail(OrderDetail orderDetail);
+    List<UserEntity> mapOrderDetailEntityList (List<OrderDetail> orderDetail);
 }

@@ -1,6 +1,6 @@
 package org.cfs.data.mapper;
 
-import org.cfs.data.jpa.entity.ProductEntity;
+import org.cfs.data.jpa.entity.CfsEventEntity;
 import org.cfs.domain.entity.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,7 +18,7 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 public interface ProductDataMapper {
 
     @Mapping(target = "price", source = "source.latestPrice.amount")
-    Product map(ProductEntity source);
+    Product map(CfsEventEntity source);
 
-    List<Product> mapList(List<ProductEntity> sources);
+    List<Product> mapList(List<CfsEventEntity> sources);
 }

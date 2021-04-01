@@ -1,6 +1,6 @@
 package org.cfs.data.jpa.spec.processor;
 
-import org.cfs.data.jpa.entity.ProductEntity;
+import org.cfs.data.jpa.entity.CfsEventEntity;
 import org.cfs.domain.vo.ProductCriteria;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -17,7 +17,7 @@ public class ProductNameProcessor implements ProductCriteriaProcessor {
     }
 
     @Override
-    public Specification<ProductEntity> build(ProductCriteria productCriteria) {
+    public Specification<CfsEventEntity> build(ProductCriteria productCriteria) {
         return (root, query, criteriaBuilder) -> {
             Path<String> childPath = root.get("name");
             Predicate predicate = criteriaBuilder.like(criteriaBuilder.lower(childPath), String.format("%%%s%%", productCriteria.getName().toLowerCase()));

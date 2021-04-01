@@ -1,7 +1,7 @@
 package org.cfs.data.jpa.repository;
 
-import org.cfs.data.jpa.entity.OrderEntity;
+import org.cfs.data.jpa.entity.AgencyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrderJpaRepository extends JpaRepository<OrderEntity, Long> {
+public interface OrderJpaRepository extends JpaRepository<AgencyEntity, Long> {
 }

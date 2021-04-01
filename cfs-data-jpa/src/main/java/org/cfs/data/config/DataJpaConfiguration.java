@@ -2,7 +2,7 @@ package org.cfs.data.config;
 
 import org.cfs.data.adapter.OrderRepositoryAdapter;
 import org.cfs.data.adapter.ProductRepositoryAdapter;
-import org.cfs.data.jpa.entity.ProductEntity;
+import org.cfs.data.jpa.entity.CfsEventEntity;
 import org.cfs.data.jpa.repository.OrderJpaRepository;
 import org.cfs.data.jpa.repository.ProductJpaRepository;
 import org.cfs.data.jpa.spec.ProductSpecificationBuilder;
@@ -21,7 +21,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.List;
 
 @Configuration
-@EntityScan(basePackageClasses = ProductEntity.class)
+@EntityScan(basePackageClasses = CfsEventEntity.class)
 @EnableJpaRepositories(basePackageClasses = ProductJpaRepository.class)
 public class DataJpaConfiguration {
 

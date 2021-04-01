@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.cfs.data.jpa.entity.PriceEntity;
-import org.cfs.data.jpa.entity.ProductEntity;
+import org.cfs.data.jpa.entity.CfsEventEntity;
 import org.cfs.data.jpa.repository.ProductJpaRepository;
 import org.cfs.data.jpa.spec.ProductSpecificationBuilder;
 import org.cfs.data.mapper.ProductDataMapper;
@@ -12,7 +12,6 @@ import org.cfs.domain.entity.Product;
 import org.cfs.domain.repository.ProductRepository;
 import org.cfs.domain.vo.ProductCriteria;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class ProductRepositoryAdapter implements ProductRepository {
 
     @Override
     public void updatePrice(Long productId, double price) {
-        ProductEntity product = productJpaRepository.getById(productId);
+        CfsEventEntity product = productJpaRepository.getById(productId);
         PriceEntity priceEntity = new PriceEntity();
         priceEntity.setAmount(price);
         priceEntity.setProduct(product);
