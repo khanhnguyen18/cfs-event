@@ -1,0 +1,36 @@
+@startuml
+node "cfs-bootstrap"
+
+package "Presentation" {
+  node "cfs-rest"
+}
+
+package "Domain" {
+  node "cfs-domain"
+}
+
+
+package "Application Service" {
+  node "cfs-application"
+}
+
+package "Infrastructrue" {
+  node "cfs-data-jpa"
+}
+
+database "H2" {
+
+}
+
+
+[cfs-bootstrap] --> [cfs-rest]
+[cfs-bootstrap] --> [cfs-data-jpa]
+
+[cfs-data-jpa] --> [cfs-domain]
+[cfs-application] --> [cfs-domain]
+
+[cfs-rest] --> [cfs-application]
+[cfs-data-jpa] -[dashed]->H2 : use
+
+
+@enduml
