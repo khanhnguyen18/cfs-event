@@ -12,15 +12,11 @@ import java.util.UUID;
 @Setter
 public class CfsEventDTO {
     Long id;
-
     UUID eventId;
     String eventNumber;
     String eventTypeCode;
     LocalDateTime eventTime;
     LocalDateTime dispatchTime;
-
-
     Agency agency;
-
     Responder responder;
 }

@@ -12,6 +12,10 @@ public class CfsEventApplicationService {
 
     CfsEventRepository cfsEventRepository;
 
+    public CfsEvent create(CfsEvent cfsEvent) {
+        return cfsEventRepository.create(cfsEvent);
+    }
+
     public List<CfsEvent> search(SearchCriteria searchCriteria) {
         return cfsEventRepository.search(searchCriteria);
     }

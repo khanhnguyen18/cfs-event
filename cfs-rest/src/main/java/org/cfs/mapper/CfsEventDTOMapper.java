@@ -16,6 +16,7 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 )
 public interface CfsEventDTOMapper {
     CfsEventDTO map(CfsEvent cfsEvent);
+    CfsEvent map(CfsEventDTO cfsEvent);
 
     List<CfsEventDTO> map(List<CfsEvent> cfsEvents);
 }

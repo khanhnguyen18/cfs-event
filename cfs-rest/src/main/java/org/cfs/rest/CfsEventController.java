@@ -18,6 +18,11 @@ public class CfsEventController {
     private final CfsEventApplicationService cfsEventApplicationService;
     private final CfsEventDTOMapper mapper;
 
+    @PostMapping("/create")
+    public CfsEventDTO create(@RequestBody CfsEventDTO cfsEventDTO) {
+        return mapper.map(cfsEventApplicationService.create(mapper.map(cfsEventDTO)));
+    }
+
     @PostMapping("/search")
     public List<CfsEventDTO> search(@RequestBody SearchCriteria searchCriteria) {
         return mapper.map(cfsEventApplicationService.search(searchCriteria));

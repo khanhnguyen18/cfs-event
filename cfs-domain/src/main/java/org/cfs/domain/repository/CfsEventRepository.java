@@ -7,5 +7,6 @@ import org.cfs.domain.vo.SearchCriteria;
 import java.util.List;
 
 public interface CfsEventRepository {
+    CfsEvent create(CfsEvent cfsEvent);
     List<CfsEvent> search(SearchCriteria productCriteria);
 }
