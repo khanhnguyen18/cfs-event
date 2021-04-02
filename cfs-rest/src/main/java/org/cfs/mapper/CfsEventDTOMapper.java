@@ -1,9 +1,7 @@
 package org.cfs.mapper;
 
-import org.cfs.domain.entity.Order;
-import org.cfs.domain.entity.OrderDetail;
-import org.cfs.dto.OrderDTO;
-import org.cfs.dto.OrderDetailDTO;
+import org.cfs.domain.entity.CfsEvent;
+import org.cfs.dto.CfsEventDTO;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -16,10 +14,8 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
         nullValuePropertyMappingStrategy = SET_TO_NULL,
         nullValueCheckStrategy = ALWAYS
 )
-public interface OrderDTOMapper {
-    Order map(OrderDTO orderDTO);
+public interface CfsEventDTOMapper {
+    CfsEventDTO map(CfsEvent cfsEvent);
 
-    OrderDetail mapOrderDetail(OrderDetailDTO orderDetailDTO);
-
-    List<OrderDetail> mapOrderDetailList(List<OrderDetailDTO> orderDetailDTO);
+    List<CfsEventDTO> map(List<CfsEvent> cfsEvents);
 }

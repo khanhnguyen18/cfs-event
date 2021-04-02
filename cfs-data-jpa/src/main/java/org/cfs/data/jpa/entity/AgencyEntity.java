@@ -17,9 +17,8 @@ import java.util.List;
 public class AgencyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_ORDER")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_AGENCY")
     Long id;
 
     String name;
-
 }

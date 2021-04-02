@@ -1,18 +1,13 @@
 package org.cfs.data.config;
 
-import org.cfs.data.adapter.OrderRepositoryAdapter;
-import org.cfs.data.adapter.ProductRepositoryAdapter;
+import org.cfs.data.adapter.CfsEventRepositoryAdapter;
 import org.cfs.data.jpa.entity.CfsEventEntity;
-import org.cfs.data.jpa.repository.OrderJpaRepository;
-import org.cfs.data.jpa.repository.ProductJpaRepository;
-import org.cfs.data.jpa.spec.ProductSpecificationBuilder;
-import org.cfs.data.jpa.spec.processor.ProductColourProcessor;
-import org.cfs.data.jpa.spec.processor.ProductCriteriaProcessor;
-import org.cfs.data.jpa.spec.processor.ProductNameProcessor;
-import org.cfs.data.mapper.OrderDataMapper;
-import org.cfs.data.mapper.ProductDataMapper;
-import org.cfs.domain.repository.OrderRepository;
-import org.cfs.domain.repository.ProductRepository;
+import org.cfs.data.jpa.repository.CfsEventJpaRepository;
+import org.cfs.data.jpa.spec.CfsEventSpecificationBuilder;
+import org.cfs.data.jpa.spec.processor.CfsDateFromProcessor;
+import org.cfs.data.jpa.spec.processor.CfsDateToCriteriaProcessor;
+import org.cfs.data.mapper.CfsEventDataMapper;
+import org.cfs.domain.repository.CfsEventRepository;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,35 +17,24 @@ import java.util.List;
 
 @Configuration
 @EntityScan(basePackageClasses = CfsEventEntity.class)
-@EnableJpaRepositories(basePackageClasses = ProductJpaRepository.class)
+@EnableJpaRepositories(basePackageClasses = CfsEventJpaRepository.class)
 public class DataJpaConfiguration {
 
     @Bean
-    public ProductRepository productRepositoryAdapter(ProductJpaRepository productJpaRepository,
-                                                      ProductDataMapper mapper,
-                                                      ProductSpecificationBuilder productSpecificationBuilder) {
-        return new ProductRepositoryAdapter(productJpaRepository, mapper, productSpecificationBuilder);
+    public CfsEventRepository cfsEventRepositoryAdapter(CfsEventJpaRepository productJpaRepository,
+                                                        CfsEventDataMapper mapper,
+                                                        CfsEventSpecificationBuilder productSpecificationBuilder) {
+        return new CfsEventRepositoryAdapter(productJpaRepository, mapper, productSpecificationBuilder);
     }
 
     @Bean
-    ProductSpecificationBuilder productSpecificationBuilder(List<ProductCriteriaProcessor> productCriteriaProcessors) {
-        return new ProductSpecificationBuilder(productCriteriaProcessors);
+    CfsEventSpecificationBuilder productSpecificationBuilder(List<CfsDateToCriteriaProcessor> productCriteriaProcessors) {
+        return new CfsEventSpecificationBuilder(productCriteriaProcessors);
     }
 
     @Bean
-    ProductCriteriaProcessor productNameProcessor() {
-        return new ProductNameProcessor();
-    }
-
-    @Bean
-    ProductColourProcessor productColourProcessor() {
-        return new ProductColourProcessor();
-    }
-
-    @Bean
-    public OrderRepository orderRepositoryAdapter(OrderJpaRepository orderJpaRepository,
-                                                  OrderDataMapper mapper) {
-        return new OrderRepositoryAdapter(orderJpaRepository, mapper);
+    CfsDateToCriteriaProcessor productNameProcessor() {
+        return new CfsDateFromProcessor();
     }
 
 }

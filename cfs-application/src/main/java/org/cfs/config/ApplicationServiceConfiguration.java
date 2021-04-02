@@ -1,9 +1,7 @@
 package org.cfs.config;
 
-import org.cfs.domain.repository.OrderRepository;
-import org.cfs.domain.repository.ProductRepository;
-import org.cfs.service.OrderApplicationService;
-import org.cfs.service.ProductApplicationService;
+import org.cfs.domain.repository.CfsEventRepository;
+import org.cfs.service.CfsEventApplicationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,12 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationServiceConfiguration {
 
     @Bean
-    ProductApplicationService productApplicationService(ProductRepository productRepository) {
-        return new ProductApplicationService(productRepository);
+    CfsEventApplicationService cfsEventApplicationService(CfsEventRepository cfsEventRepository) {
+        return new CfsEventApplicationService(cfsEventRepository);
     }
 
-    @Bean
-    OrderApplicationService orderApplicationService(OrderRepository orderRepository) {
-        return new OrderApplicationService(orderRepository);
-    }
 }

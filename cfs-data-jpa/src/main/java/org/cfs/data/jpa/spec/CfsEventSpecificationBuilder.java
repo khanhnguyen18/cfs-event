@@ -5,21 +5,21 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.cfs.data.jpa.entity.CfsEventEntity;
-import org.cfs.data.jpa.spec.processor.ProductCriteriaProcessor;
-import org.cfs.domain.vo.ProductCriteria;
+import org.cfs.data.jpa.spec.processor.CfsDateToCriteriaProcessor;
+import org.cfs.domain.vo.SearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductSpecificationBuilder {
+public class CfsEventSpecificationBuilder {
 
-    List<ProductCriteriaProcessor> productCriteriaProcessors;
+    List<CfsDateToCriteriaProcessor> productCriteriaProcessors;
 
-    public Specification<CfsEventEntity> build(ProductCriteria productCriteria) {
+    public Specification<CfsEventEntity> build(SearchCriteria productCriteria) {
         Specification<CfsEventEntity> result = null;
-        for (ProductCriteriaProcessor productCriteriaProcessor : productCriteriaProcessors) {
+        for (CfsDateToCriteriaProcessor productCriteriaProcessor : productCriteriaProcessors) {
             if (productCriteriaProcessor.needBuild(productCriteria)) {
                 Specification<CfsEventEntity> specification = productCriteriaProcessor.build(productCriteria);
                 if (result == null) {

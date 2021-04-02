@@ -22,23 +22,11 @@ class CfsApplicationIT {
     private MockMvc mockMvc;
 
     @Test
-    void search_should_return_list_products() throws Exception {
+    void search_should_return_correct_list() throws Exception {
         // Then
-//        mockMvc.perform(request(POST, "/rest/api/v1/products/search"))
+//        mockMvc.perform(request(POST, "/rest/api/v1/cfsevent/search"))
 //                .andExpect(status().isOk())
 //                .andExpect(jsonPath("$", hasSize(2)));
     }
 
-    @Test
-    void getById_should_get_product_with_latest_price() throws Exception {
-        // Then
-        mockMvc.perform(request(GET, "/rest/api/v1/products/1/detail"))
-                .andExpect(status().isOk());
-
-    }
-
-    @Test
-    void should_implement_search_feature_correctly() throws Exception {
-
-    }
 }

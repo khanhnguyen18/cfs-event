@@ -1,7 +1,6 @@
 package org.cfs.rest;
 
-import org.cfs.mapper.ProductCriteriaMapper;
-import org.cfs.mapper.ProductDTOMapper;
+import org.cfs.mapper.CfsEventDTOMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -9,16 +8,13 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ProductControllerTest {
+public class CfsEventControllerTest {
 
     @InjectMocks
-    private ProductController productController;
+    private CfsEventController productController;
 
     @Mock
-    private ProductDTOMapper productDTOMapper;
-
-    @Mock
-    private ProductCriteriaMapper productCriteriaMapper;
+    private CfsEventDTOMapper productDTOMapper;
 
     @Test
     public void search_should_work_correctly(){

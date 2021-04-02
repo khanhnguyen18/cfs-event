@@ -1,17 +1,17 @@
 package org.cfs.domain.vo;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDate;
 
 import static lombok.AccessLevel.PRIVATE;
 
 @Getter
 @Setter
 @FieldDefaults(level = PRIVATE)
-public class ProductCriteria {
-    String name;
-    Colour colour;
+public class SearchCriteria {
+    LocalDate dateFrom;
+    LocalDate dateTo;
 }

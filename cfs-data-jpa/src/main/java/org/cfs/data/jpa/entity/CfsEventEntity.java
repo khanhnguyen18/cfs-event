@@ -2,14 +2,9 @@ package org.cfs.data.jpa.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.JoinColumnOrFormula;
-import org.hibernate.annotations.JoinColumnsOrFormulas;
-import org.hibernate.annotations.JoinFormula;
-import org.cfs.domain.vo.Colour;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,7 +15,7 @@ import java.util.UUID;
 public class CfsEventEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_PRODUCT")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CFS_EVENT")
     Long id;
 
     UUID eventId;
@@ -29,10 +24,10 @@ public class CfsEventEntity {
     LocalDateTime eventTime;
     LocalDateTime dispatchTime;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     AgencyEntity agency;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     ResponderEntity responder;
 
 }

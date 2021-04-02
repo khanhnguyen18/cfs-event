@@ -12,17 +12,18 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
-@Table(name = "T_ORDER")
+@Table(name = "RESPONDER")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ResponderEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_ORDER")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_RESPONDER")
     Long id;
 
-    LocalDateTime dateTime;
+    String code;
+    String name;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    List<UserEntity> orderDetails;
+    @ManyToOne
+    AgencyEntity agencyEntity;
 
 }
