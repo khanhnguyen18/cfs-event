@@ -17,5 +17,6 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 public interface CfsEventDataMapper {
 
     CfsEvent map(CfsEventEntity source);
+    CfsEventEntity map(CfsEvent source);
     List<CfsEvent> mapList(List<CfsEventEntity> sources);
 }
