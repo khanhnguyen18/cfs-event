@@ -24,6 +24,6 @@ public class ResponderEntity {
     String name;
 
     @ManyToOne
-    AgencyEntity agencyEntity;
+    AgencyEntity agency;
 
 }

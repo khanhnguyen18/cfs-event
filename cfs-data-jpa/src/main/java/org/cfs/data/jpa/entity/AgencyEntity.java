@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Setter
@@ -17,8 +18,7 @@ import java.util.List;
 public class AgencyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_AGENCY")
-    Long id;
+    UUID id;
 
     String name;
 }

@@ -14,4 +14,5 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 )
 public interface AgencyDataMapper {
     AgencyEntity map(Agency agency);
+    Agency map(AgencyEntity agency);
 }

@@ -12,7 +12,8 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 @Mapper(
         componentModel = "spring",
         nullValuePropertyMappingStrategy = SET_TO_NULL,
-        nullValueCheckStrategy = ALWAYS
+        nullValueCheckStrategy = ALWAYS,
+        imports = {ResponderDataMapper.class, AgencyDataMapper.class}
 )
 public interface CfsEventDataMapper {
 

@@ -1,0 +1,62 @@
+{
+  "consumer": {
+    "name": "client"
+  },
+  "provider": {
+    "name": "uw-folder-api"
+  },
+  "interactions": [
+    {
+      "description": "create a call for service event",
+      "request": {
+        "method": "POST",
+        "path": "/rest/api/v1/cfs-events",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "agency_id": "4f9b99eb-490a-484e-bade-15e3841dfda9",
+          "event_id": "562c89de-f140-4482-8ef5-5f1703b286b6",
+          "event_number": "3234019",
+          "event_type_code": "SMO",
+          "event_time": "2020-11-25 07:36:04.193",
+          "dispatch_time": "2020-11-26 13:55:46.466",
+          "responder": "OFFICER_001"
+        },
+        "matchingRules": {
+          "$.body.agency_id": {
+            "match": "type"
+          },
+          "$.body.event_id": {
+            "match": "type"
+          },
+          "$.body.event_number": {
+            "match": "type"
+          },
+          "$.body.event_type_code": {
+            "match": "type"
+          },
+          "$.body.event_time": {
+            "match": "type"
+          },
+          "$.body.dispatch_time": {
+            "match": "type"
+          },
+          "$.body.responder": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

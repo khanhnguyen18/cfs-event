@@ -16,15 +16,12 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE)
 public class CfsEvent {
     Long id;
-
     UUID eventId;
     String eventNumber;
     String eventTypeCode;
     LocalDateTime eventTime;
     LocalDateTime dispatchTime;
 
-
     Agency agency;
-
     Responder responder;
 }

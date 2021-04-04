@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -12,6 +12,6 @@ import static lombok.AccessLevel.PRIVATE;
 @Setter
 @FieldDefaults(level = PRIVATE)
 public class SearchCriteria {
-    LocalDate dateFrom;
-    LocalDate dateTo;
+    LocalDateTime eventTimeFrom;
+    LocalDateTime eventTimeTo;
 }

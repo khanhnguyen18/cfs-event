@@ -1,4 +1,4 @@
-#cfs
+#Call for service
 
 ## Architecture
 ![Screenshot](Architecture.png)
@@ -24,5 +24,6 @@ Link: <http://localhost:8080/swagger-ui.html>
 * Pass:
 
 #CURL
-## Search cfs detail: 
+## Create a cfs event:
+## Search cfs: 
 curl -X GET "http://localhost:8080/rest/api/v1/cfs/2/detail" -H  "accept: */*"
