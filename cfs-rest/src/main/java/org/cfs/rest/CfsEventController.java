@@ -3,6 +3,7 @@ package org.cfs.rest;
 import lombok.AllArgsConstructor;
 import org.cfs.dto.CfsEventDTO;
 import org.cfs.mapper.CfsEventDTOMapper;
+import org.cfs.security.service.CurrentUserService;
 import org.cfs.security.vo.CfsUser;
 import org.cfs.service.CfsEventApplicationService;
 import org.springframework.data.domain.Pageable;
@@ -23,17 +24,13 @@ public class CfsEventController {
 
     private final CfsEventApplicationService cfsEventApplicationService;
     private final CfsEventDTOMapper mapper;
+    private final CurrentUserService userService;
 
     @PostMapping("/create")
     public ResponseEntity<CfsEventDTO> create(@RequestBody CfsEventDTO cfsEventDTO) {
-        CfsUser currentUser = (CfsUser) SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getPrincipal();
-
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(mapper.map(cfsEventApplicationService.create(mapper.map(cfsEventDTO),
-                        currentUser.getAgencyId())));
+                        userService.getCurrentUser().getAgencyId())));
     }
 
     @GetMapping("/searchByEventTime")

@@ -3,14 +3,14 @@
     "name": "client"
   },
   "provider": {
-    "name": "uw-folder-api"
+    "name": "cfs-api"
   },
   "interactions": [
     {
       "description": "create a call for service event",
       "request": {
         "method": "POST",
-        "path": "/rest/api/v1/cfs-events",
+        "path": "/rest/api/v1/cfs-event/create",
         "headers": {
           "Content-Type": "application/json"
         },
