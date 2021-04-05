@@ -7,19 +7,30 @@ import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 public class CfsEventApplicationService {
 
     CfsEventRepository cfsEventRepository;
 
-    public CfsEvent create(CfsEvent cfsEvent) {
+    public CfsEvent create(CfsEvent cfsEvent, UUID agencyIdOfUser) {
+        if (cfsEvent.getAgency().getId() != agencyIdOfUser){
+            throw new RuntimeException("Not allow to create user in another agency");
+        }
+
         return cfsEventRepository.create(cfsEvent);
     }
 
-    public List<CfsEvent> search(LocalDateTime eventTimeFrom, LocalDateTime eventTimeTo, Pageable pageable) {
-        return cfsEventRepository.search(eventTimeFrom, eventTimeTo, pageable);
+    public List<CfsEvent> searchByEventTime(LocalDateTime eventTimeFrom,
+                                            LocalDateTime eventTimeTo,
+                                            UUID agencyId,
+                                            Pageable pageable) {
+        return cfsEventRepository.searchByEventTime(eventTimeFrom, eventTimeTo, agencyId, pageable);
     }
 
+    public List<CfsEvent> searchByResponderCode(String responderCode, UUID agencyId) {
+        return cfsEventRepository.searchByResponderCode(responderCode, agencyId);
+    }
 
 }

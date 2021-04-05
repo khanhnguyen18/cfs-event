@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -34,9 +35,21 @@ public class CfsEventRepositoryAdapter implements CfsEventRepository {
     }
 
     @Override
-    public List<CfsEvent> search(LocalDateTime eventTimeFrom, LocalDateTime eventTimeTo, Pageable pageable) {
-        Page<CfsEventEntity> eventEntityPage = cfsEventJpaRepository.findByEventTimeBetween(eventTimeFrom, eventTimeTo, pageable);
+    public List<CfsEvent> searchByEventTime(LocalDateTime eventTimeFrom,
+                                            LocalDateTime eventTimeTo,
+                                            UUID agencyId,
+                                            Pageable pageable) {
+        Page<CfsEventEntity> eventEntityPage = cfsEventJpaRepository.findByEventTimeBetweenAndAgencyId(
+                eventTimeFrom,
+                eventTimeTo,
+                agencyId,
+                pageable);
         return mapper.mapList(eventEntityPage.getContent());
+    }
+
+    @Override
+    public List<CfsEvent> searchByResponderCode(String responderCode, UUID agencyId) {
+        return mapper.mapList(cfsEventJpaRepository.findByResponderCodeAndAgencyId(responderCode, agencyId));
     }
 
 
