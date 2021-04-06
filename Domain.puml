@@ -32,5 +32,6 @@ class User {
 CfsEvent "many" *-- "1" Responder
 CfsEvent "many" *-- "1" Agency
 User "many" *-- "1" Agency
+Responder "many" *-- "1" Agency
 
 @enduml

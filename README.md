@@ -3,13 +3,8 @@
 ## Architecture
 ![Screenshot](Architecture.png)
 
-#API  Documentation
-Swagger use to help user can execute the rest API with documentation
-Link: <http://localhost:8080/swagger-ui.html>
-![Screenshot](swagger.png)
-
 # Entity table
-![Screenshot](Architecture.png)
+![Screenshot](Domain.png)
 
 # Fix data
 ### Agency <br/>
@@ -25,19 +20,30 @@ Link: <http://localhost:8080/swagger-ui.html>
 ### Cfs Event <br/>
 ![Screenshot](fix_data_cfs_event.png)
 
-## Library
-- Lombok
+#How to run application
+    Just run CfsApplication.java
+#Login step
+* Call this CURL to receive the token
+    
+    
 
-# Search
 
+#Solution for 
+##  User should be able to create a CFS with the following information: event number, event type (with type code), event time, dispatch time, responder:
+*
+
+## Search cfs: 
+curl -X GET "http://localhost:8080/rest/api/v1/cfs/2/detail" -H  "accept: */*"
+
+#Technical stack
+
+#API  Documentation
+Swagger use to help user can execute the rest API with documentation
+Link: <http://localhost:8080/swagger-ui.html>
+![Screenshot](swagger.png)
 
 #H2
 * Console link: http://localhost:8080/h2-console
 * Database name:jdbc:h2:mem:testdb
 * User: sa
 * Pass:
-
-#CURL
-## Create a cfs event:
-## Search cfs: 
-curl -X GET "http://localhost:8080/rest/api/v1/cfs/2/detail" -H  "accept: */*"
