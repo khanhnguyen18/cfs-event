@@ -1,36 +1,50 @@
 package org.cfs.pact.provider;
 
 
-//@ExtendWith({PactConsumerTestExt.class, SpringExtension.class})
-//@PactTestFor(providerName = "ses-api", port = "8080")
-//@ContextConfiguration(classes = {PactConsumerSpringConfiguration.class})
+import au.com.dius.pact.provider.junit5.HttpTestTarget;
+import au.com.dius.pact.provider.junit5.PactVerificationContext;
+import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider;
+import au.com.dius.pact.provider.junitsupport.Provider;
+import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
+import org.cfs.LocalCfsApplication;
+import org.cfs.security.service.CurrentUserService;
+import org.cfs.security.vo.CfsUser;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.ActiveProfiles;
+
+import java.util.UUID;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        classes = LocalCfsApplication.class)
+@Provider("cfs-api")
+@ActiveProfiles(profiles = {"integration_test"})
+@PactFolder("pact")
 public class CfsEventPactProvider {
+    @LocalServerPort
+    private int serverPort;
 
+    @MockBean
+    private CurrentUserService currentUserService;
 
-//    @Pact(consumer = "cfs-events")
-//    RequestResponsePact createPact(PactDslWithProvider builder) {
-//        DslPart requestBody = new PactDslJsonBody()
-//                .object("documentMetadata")
-//                .array("properties")
-//                .object();
-//        Map<String, String> header = new HashMap<>();
-//        header.put("Content-Type", "application/json");
-//        return builder
-//                .given("")
-//                .uponReceiving("Create call for service event")
-//                .path("/rest/api/v1/cfs-event/create")
-//                .headers(header)
-//                .body(requestBody)
-//                .method(HttpMethod.POST.toString())
-//                .willRespondWith()
-//                .status(201)
-//                .toPact();
-//    }
-//
-//    @Test
-//    @PactTestFor(pactMethod = "createPact")
-//    public void createCallForServiceEvent() {
-//
-//    }
+    @BeforeEach
+    void before(PactVerificationContext context) {
+        context.setTarget(new HttpTestTarget("localhost", serverPort, "/"));
+        CfsUser cfsUser = mock(CfsUser.class);
+        when(cfsUser.getAgencyId()).thenReturn(UUID.fromString("4f9b99eb-490a-484e-bade-15e3841dfda9"));
+        when(currentUserService.getCurrentUser()).thenReturn(cfsUser);
+    }
 
+    @TestTemplate
+    @ExtendWith(PactVerificationInvocationContextProvider.class)
+    void pactVerificationTestTemplate(PactVerificationContext context) {
+        context.verifyInteraction();
+    }
 }

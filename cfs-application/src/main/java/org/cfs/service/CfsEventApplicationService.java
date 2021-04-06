@@ -15,7 +15,7 @@ public class CfsEventApplicationService {
     CfsEventRepository cfsEventRepository;
 
     public CfsEvent create(CfsEvent cfsEvent, UUID agencyIdOfUser) {
-        if (cfsEvent.getAgency().getId() != agencyIdOfUser){
+        if (!cfsEvent.getAgency().getId().equals(agencyIdOfUser)){
             throw new RuntimeException("Not allow to create user in another agency");
         }
 

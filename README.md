@@ -6,10 +6,24 @@
 #API  Documentation
 Swagger use to help user can execute the rest API with documentation
 Link: <http://localhost:8080/swagger-ui.html>
-![Screenshot](./swagger.png)
+![Screenshot](swagger.png)
 
 # Entity table
 ![Screenshot](Architecture.png)
+
+# Fix data
+### Agency <br/>
+![Screenshot](fix_data_agency.png)
+### Responder <br/>
+![Screenshot](fix_data_responder.png)
+* Responder OFFICER_001 belong to agency 1
+* Responder OFFICER_002 belong to agency 2
+### User <br/>
+![Screenshot](fix_data_user.png)
+* user1 belong to agency 1
+* user2 belong to agency 2
+### Cfs Event <br/>
+![Screenshot](fix_data_cfs_event.png)
 
 ## Library
 - Lombok

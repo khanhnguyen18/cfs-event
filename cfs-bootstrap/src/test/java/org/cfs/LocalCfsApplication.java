@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Import;
 public class LocalCfsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LocalCfsApplication.class, args);
+        SpringApplication springApp = new SpringApplication(LocalCfsApplication.class);
+        springApp.setAdditionalProfiles("integration_test");
+        springApp.run(args);
     }
 
 }
