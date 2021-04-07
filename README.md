@@ -51,8 +51,15 @@
 ##Architecture: Hexagonal, Domain driven design
 ##Library: Spring boot, Jpa, Lombok, Mapstruct
 
+#Test plan
+*Unit test: for the business logic
+*BDD Test: for service layer. Use gherkin language to connect with BA.
+*Integration test: MVC test for test security
+*Contract API: PACT test
+* Could apply TDD for improving the quantity of test
+
 #API  Documentation
-Swagger use to help user can execute the rest API with documentation
+Swagger help user can execute the rest API with documentation
 Link: <http://localhost:8080/swagger-ui.html>
 ![Screenshot](swagger.png)
 
