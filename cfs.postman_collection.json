@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "60fd546a-3be9-4428-85c0-0be3c43e53ee",
+		"name": "cfs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0. Login",
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": true,
+				"strictSSL": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user1\",\r\n    \"password\": \"password\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Create a cfs event",
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": true,
+				"strictSSL": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTYxNzgwOTYzMiwiaWF0IjoxNjE3NzkxNjMyfQ.hRl6Oyj41UWHDaHeTmgXMCcxn2Ex3Hs3OTR5NgpeLv0nT18qYCEoilKPzQe6WmnRda-HHOnLXe3FSJwd8hPmHw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"agency_id\": \"4f9b99eb-490a-484e-bade-15e3841dfda9\",\r\n\"event_id\": \"562c89de-f140-4482-8ef5-5f1703b286b6\",\r\n\"event_number\": \"3234019\",\r\n\"event_type_code\": \"SMO\",\r\n\"event_time\": \"2020-11-25 07:36:04.193\",\r\n\"dispatch_time\": \"2020-11-26 13:55:46.466\",\r\n\"responder\": \"OFFICER_001\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/api/v1/cfs-event/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"api",
+						"v1",
+						"cfs-event",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Search by responder",
+			"protocolProfileBehavior": {
+				"strictSSL": true,
+				"followAuthorizationHeader": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMiIsImV4cCI6MTYxNzc4MzE5NiwiaWF0IjoxNjE3NzY1MTk2fQ.SfJjBBZ9fxLw2SuGTSoP9fSXuFyZH4cjkQABmWAYtTdmU-GFAOmfd5aPkj99JAITmQeRJlkmc-AYtiRU0mkWzw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/api/v1/cfs-event/searchByResponderCode?responderCode=OFFICER_001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"api",
+						"v1",
+						"cfs-event",
+						"searchByResponderCode"
+					],
+					"query": [
+						{
+							"key": "responderCode",
+							"value": "OFFICER_001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Search by event time",
+			"protocolProfileBehavior": {
+				"strictSSL": true,
+				"followAuthorizationHeader": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMiIsImV4cCI6MTYxNzYzMzU1MywiaWF0IjoxNjE3NjE1NTUzfQ.9GAofaLUkcG8bK-3HWNyGN6eiGqd_DMyXWn7eaTfQ3EfbikQM3AdZRS8VvYqe0CeM-oxbzlyoUcZmxIwGfrsdw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/api/v1/cfs-event/searchByEventTime?eventTimeFrom=2021-01-02 03:00:00.000&eventTimeTo=2021-01-03 00:00:00.000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"api",
+						"v1",
+						"cfs-event",
+						"searchByEventTime"
+					],
+					"query": [
+						{
+							"key": "eventTimeFrom",
+							"value": "2021-01-02 03:00:00.000"
+						},
+						{
+							"key": "eventTimeTo",
+							"value": "2021-01-03 00:00:00.000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
